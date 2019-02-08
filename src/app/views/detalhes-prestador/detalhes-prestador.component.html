@@ -1,0 +1,91 @@
+
+    <div class="row">
+        <nav class="navbar navbar-light bg-primary" style="width:100%;">
+                <a class="navbar-brand" href="#" style="color:white; margin-left: 10px;">
+                    <img class="avatar d-inline-block align-top" src="./eu.png" width="30" height="30" alt="">
+                    Aida Plataforma
+                </a>
+        </nav>
+    </div>
+    <br>
+    <div *ngIf = "carregado == true" class="row">
+        <div class="col-md-2 col-lg-2 col-sm-2"></div>
+            <div class="col-md-8 col-lg-8 col-sm-8">
+                <div class="card">
+                    <div class="card-body" style="height:auto;">
+                        <div class="col-md-4 col-lg-4 col-sm-4">    
+                            <h4 class="card-title">{{prestador.name}} - {{prestador.profissional}}</h4>
+                        </div>
+                        <hr><br>
+                        <h6 class = "card-subtitle">
+                          <div class="row">
+                            <div style="margin-left:20px;" class="col-md-3 col-lg-3 col-sm-3">
+                                Contato: {{prestador.telefone}}
+                            </div><br>
+                            <div class="col-md-4 col-lg-4 col-sm-4">
+                                E-mail: {{prestador.email}}
+                            </div>
+                          </div>
+                        </h6>
+                        <br> <br>
+                        <div class="row" style="margin-left:20px; margin-top:10px;">
+                            <div class="col-lg-10 col-md-10 col-sm-10" style="margin-left:40px; margin-top:10px;">
+                                <div class="card" style="width: 98%;"><br>
+                                    <div class="row">
+                                        <br><br>
+                                            <h6 style="margin-left:40px; margin-top:10px;">Avaliação Geral:</h6> &nbsp; <span><p-rating style="display:inline-block; margin-top: 7px;" [(ngModel)]="avGeral" 
+                                            [cancel]="false" readonly="true"></p-rating>
+                                            </span> 
+                                            
+                                    </div><hr> 
+                                    <h6  style="margin-left:40px;">Avaliação Específica</h6>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <br>
+                                                <h6 style="margin-left:40px;">Qualidade do Serviço:</h6> &nbsp; <span><p-rating (onRate) = "changeRate()" style="display:inline-block;  margin-left:30px;" [(ngModel)]="avGeral" 
+                                                [cancel]="false"></p-rating>
+                                            </span> 
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <br>
+                                                <h6 style="margin-left:40px;">Prazo:</h6> &nbsp; <span><p-rating (onRate) = "changeRate()" style="display:inline-block; margin-left:30px;" [(ngModel)]="avPrazo" 
+                                                [cancel]="false"></p-rating>
+                                            </span> 
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <br>
+                                                <h6 style="margin-left:40px;">Orçamento:</h6> &nbsp; <span><p-rating (onRate) = "changeRate()" style="display:inline-block; margin-left:30px;" [(ngModel)]="avOrcamento" 
+                                                [cancel]="false"></p-rating>
+                                            </span> 
+                                        </div>
+                                        <div class="col-md-6 col-lg-6 col-sm-6">
+                                            <br>
+                                                <h6 style="margin-left:40px;">Atendimento:</h6> &nbsp; <span><p-rating (onRate) = "changeRate()" style="display:inline-block; margin-left:30px;" [(ngModel)]="avAtendimento" 
+                                                [cancel]="false"></p-rating>
+                                            </span> 
+                                        </div>
+                                    </div> <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-10 col-md-10 col-sm-10" style="margin-left:60px; margin-top:20px;">
+                            <div class="card" style="width: 98%;">
+                                <div class="col-md-12 col-sm-12 col-lg-12"><br>
+                                    <div class="card-title"><h6>Portfólio</h6></div>
+                                        <div style="margin-top: -10px;" class="card-body"><br>
+                                            <div>
+                                                <img *ngFor="let url of prestador.portfolio" style="margin-left:5px;"  [src]="url" class="toexpanse rounded mb-3" width="180">
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+   
+    <br><br><br><br><br>

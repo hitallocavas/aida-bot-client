@@ -1,0 +1,43 @@
+.avatar {
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+.notificabar{
+width:20%;
+float: left;
+position: relative;
+}
+.cartao{
+    /* border-left: none;
+    border-right: none;
+    border-top: none; */
+    border-radius: 0%;
+    position: relative;
+    margin-top: 10px;
+}
+.notificacoes{
+    font-size: 20px;
+    margin-bottom: 15px;
+    margin-top:10px;
+    
+}
+
+.cardImage{
+    height: 200px;
+}
+.navbar{
+    max-height: none;
+}
+.clienteCard{
+    border: none;
+}
+.list-group{
+    max-height: 322px;
+    margin-bottom: 10px;
+    overflow:scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+}
