@@ -10,7 +10,7 @@ import { AidaService } from 'src/app/aida-service/aida-service.component';
 export class DetalhesPrestadorComponent implements OnInit {
 
   private id:String = "";
-  private carregado:boolean = false;
+  carregado:boolean = false;
   private prestador:Object = new Object();
   private avQualidade:Number = 0;
   private avPrazo:Number = 0;

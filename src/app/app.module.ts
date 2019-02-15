@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './views/home/home.component';
@@ -13,6 +12,9 @@ import { AidaService } from './aida-service/aida-service.component';
 import {RatingModule} from 'primeng/rating';
 import { HttpClientModule } from '@angular/common/http';
 import { DetalhesPrestadorComponent } from './views/detalhes-prestador/detalhes-prestador.component';
+import { ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,15 +24,19 @@ import { DetalhesPrestadorComponent } from './views/detalhes-prestador/detalhes-
     PrestadoresComponent,
     InicioComponent,
     DetalhesPrestadorComponent,
+    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule, 
     RatingModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastModule,
+    BrowserModule,
+    BrowserAnimationsModule,
   ],
-  providers: [AidaService],
+  providers: [AidaService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

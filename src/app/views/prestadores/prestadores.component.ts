@@ -4,14 +4,18 @@ import { AidaService } from 'src/app/aida-service/aida-service.component';
 import { Prestador } from 'src/app/models/prestador.model';
 import { Router } from '@angular/router';
 
+import { MessageService } from 'primeng/components/common/messageservice';
+
+
 @Component({
   selector: 'app-prestadores',
   templateUrl: './prestadores.component.html',
-  styleUrls: ['./prestadores.component.css']
+  styleUrls: ['./prestadores.component.css'],
+  providers: [MessageService]
 })
 export class PrestadoresComponent implements OnInit {
 
-  private principal:boolean = true;
+  principal:boolean = true;
   private urls = new Array<String>();
   private avQualidade:Number = 0;
   private avPrazo:Number = 0;
@@ -24,7 +28,8 @@ export class PrestadoresComponent implements OnInit {
   private listaPrestadores:Object[] = [];
  
   constructor(private aidaService:AidaService,
-    private router: Router,) {  
+    private router: Router,
+    private messageService: MessageService) {  
   }
 
   ngOnInit() {
@@ -44,7 +49,7 @@ export class PrestadoresComponent implements OnInit {
   }
 
   private cadastro(){
-    this.principal = false;
+   this.principal = false;
   }
 
   private showPrestador(prestador){
@@ -52,8 +57,21 @@ export class PrestadoresComponent implements OnInit {
   }
 
   private changeRate(){
-    this.avGeral = (this.avAtendimento.valueOf() + this.avPrazo.valueOf() + this.avQualidade.valueOf() + this.avOrcamento.valueOf())/4;
+    let sumavGeral = (this.avAtendimento.valueOf() + this.avPrazo.valueOf() + this.avQualidade.valueOf() + this.avOrcamento.valueOf());
+    if(sumavGeral == 20){
+      this.avGeral = 5
+    }
+    else{
+      this.avGeral = (sumavGeral/4);
+      if((this.avGeral.valueOf() % 10.0) <= 0.5){
+        this.avGeral = this.avGeral.valueOf() - 1;
+      }
+      else{
+        this.avGeral = this.avGeral.valueOf();
+      }
+    }
   }
+
 
   private detectFiles(event) {
     this.urls = [];
@@ -79,10 +97,18 @@ export class PrestadoresComponent implements OnInit {
     this.prestador["avaliacaoArquiteto"]["avAtendimento"] = this.avAtendimento;
     this.prestador["avaliacaoArquiteto"]["avPrazo"] = this.avPrazo;
     this.prestador["avaliacaoArquiteto"]["avQualidade"] = this.avQualidade;
+    this.prestador["profissional"] = this.prestador["profissional"].toLowerCase();
 
     console.log(this.prestador)
     this.aidaService.cadastrarPrestador(this.prestador).then(
       data => {
+        this.messageService.add({
+          key:'sucesso',
+          severity: "success",
+          summary: "OK!",
+          detail: "Prestador cadastrado com sucesso!"
+        });
+
         console.log(data);
         let envio:Object = new Object();
         this.principal = true;

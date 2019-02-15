@@ -6,9 +6,12 @@
   }
 
 .notificabar{
-width:20%;
-float: left;
-position: relative;
+    width:20%;
+    float: left;
+    position: relative;
+}
+.card{
+    border-radius: 12.5px;
 }
 .cartao{
     /* border-left: none;
@@ -27,6 +30,7 @@ position: relative;
 
 .cardImage{
     height: 200px;
+    width: 300px;
 }
 .navbar{
     max-height: none;
@@ -40,4 +44,8 @@ position: relative;
     overflow:scroll;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+}
+
+.checked {
+    color:#f3cf06fa;
 }
