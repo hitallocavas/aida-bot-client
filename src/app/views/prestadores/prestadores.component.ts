@@ -113,7 +113,7 @@ export class PrestadoresComponent implements OnInit {
         let envio:Object = new Object();
         this.principal = true;
         envio["_id"] = data["_id"];
-        envio["UrlPerfil"] = "http://localhost:4200/prestador/" + data["_id"];
+        envio["UrlPerfil"] = "https://aidabot.herokuapp.com/prestador/" + data["_id"];
         this.aidaService.atualizarPrestador(envio).then(data => this.principal = false);
       }
     )
